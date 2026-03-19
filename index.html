@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
-    <title>Ziyah Bliss Co.</title>
+    <title>Home | Ziyah Bliss Co.</title>
 </head>
 <body>
     <nav class="navbar">
@@ -16,16 +17,33 @@
         </ul>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content">
-            <h1>Small comforts. <br><em>Beautifully curated.</em></h1>
-            <p>From cozy essentials to meaningful details, each piece is chosen with care.</p>
-            <a href="shop.html" class="btn-add" style="text-decoration:none; display:inline-block; width:auto;">Shop Collection</a>
-        </div>
-        <div class="hero-image">
-            <img src="hero-placeholder.jpg" alt="Curated Gifts">
+    <header class="hero-fullscreen">
+        <div class="hero-overlay">
+            <div class="hero-text-center">
+                <h1>Small comforts. <br><em>Beautifully curated.</em></h1>
+                <p>From cozy essentials to meaningful details, each piece is chosen with care.</p>
+                <a href="shop.html" class="btn-primary">Shop Collection</a>
+            </div>
         </div>
     </header>
+
+    <section class="reviews-section">
+        <h2 style="text-align: center; margin-bottom: 40px;">What Our Clients Say</h2>
+        <div class="reviews-grid">
+            <div class="review-card">
+                <p>"The curated boxes are absolutely stunning. Every detail feels personal and high-quality."</p>
+                <span>- Lerato M.</span>
+            </div>
+            <div class="review-card">
+                <p>"Perfect for gifting! The scents and stationery items are my absolute favorite."</p>
+                <span>- Sarah J.</span>
+            </div>
+            <div class="review-card">
+                <p>"Fast delivery and beautifully packaged. Ziyah Bliss is my go-to for self-care."</p>
+                <span>- Thabo K.</span>
+            </div>
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>
