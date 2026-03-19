@@ -22,7 +22,7 @@
         <h1 style="font-size: 2.8rem; margin-bottom: 10px;">The Collection</h1>
         <p>Curated for your daily rituals.</p>
         
-        <div class="category-nav" style="display: flex; justify-content: center; gap: 10px; margin-top: 30px; flex-wrap: wrap;">
+        <div class="category-nav">
             <button class="filter-btn active" onclick="filterCategory('all', this)">All</button>
             <button class="filter-btn" onclick="filterCategory('stationery', this)">Stationery</button>
             <button class="filter-btn" onclick="filterCategory('essentials', this)">Essentials</button>
@@ -32,7 +32,7 @@
         </div>
     </header>
 
-    <section class="product-grid" id="product-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 0 8% 80px;">
+    <section class="product-grid" id="product-grid">
         
         <div class="product-card stationery">
             <div class="p-img" style="background-image: url('1000076836.jpg');"></div>
@@ -51,64 +51,6 @@
                 <button class="btn-add" onclick="addItem('Sticky Notes+Pad', 85)">Add to Box</button>
             </div>
         </div>
-  <div class="product-card stationery">
-            <div class="p-img" style="background-image: url('IMG-20260319-WA0023.jpg');"></div>
-            <div class="p-info">
-                <h3>Incense Sticks(pack of 5)</h3>
-                <p class="price">R 15.00</p>
-                <button class="btn-add" onclick="addItem('Incense Sticks', 15)">Add to Box</button>
-            </div>
-        </div>
-
-         <div class="product-card stationery">
-            <div class="p-img" style="background-image: url('1000076788.jpg');"></div>
-            <div class="p-info">
-                <h3>Pocket hug</h3>
-                <p class="price">R 12.00</p>
-                <button class="btn-add" onclick="addItem('Pocket hug', 12)">Add to Box</button>
-            </div>
-        </div>
-
-         <div class="product-card stationery">
-            <div class="p-img" style="background-image: url('1000076839.jpg');"></div>
-            <div class="p-info">
-                <h3>Motivational cards</h3>
-                <p class="price">R3.00</p>
-                <button class="btn-add" onclick="addItem('Motivational cards',3)">Add to Box</button>
-            </div>
-        </div>
-
-          <div class="product-card stationery">
-            <div class="p-img" style="background-image: url('1000076824.jpg');"></div>
-            <div class="p-info">
-                <h3>Pocket Perfume</h3>
-                <p class="price">R50.00</p>
-                <select class="p-select" id="variant-pocket perfume">
-                    <option value="Yara White">Yara White</option>
-                    <option value="Yara Black">Yara Black</option>
-                    <option value="Hayaati">Hayaati</option>
-                  <option value="212 Men VIP">212 Men VIP</option>
-                <option value="Khamrah">Khamrah</option>
-                </select>
-                <button class="btn-add" onclick="addItem('pocket perfume', 50, null, 'variant-pocket perfume')">Add to Box</button>
-           </div>
-    
-        <div class="product-card stationery">
-            <div class="p-img" style="background-image: url('1000076824.jpg');"></div>
-            <div class="p-info">
-                <h3>Body spray</h3>
-                <p class="price">R80.00</p>
-                <select class="p-select" id="variant-mist">
-                    <option value="Yara Orange ">Yara Orange</option>
-                    <option value="Yara White">Yara White</option>
-                    <option value="Ameerat AI Arab Maroon">Ameerat AI Arab Maroon</option>
-                    <option value="Asad Black">Asad Black</option>
-                    <option value="Yara Pink">Yara Pink</option>
-                </select>
-                <button class="btn-add" onclick="addItem('Body Mist', 80, null, 'variant-mist')">Add to Box</button>
-           </div>
-        </div>
-        
 
         <div class="product-card stationery">
             <div class="p-img" style="background-image: url('1000078003.jpg');"></div>
@@ -119,39 +61,12 @@
             </div>
         </div>
 
-        <div class="product-card stationery">
-            <div class="p-img" style="background-image: url('1000076848.jpg');"></div>
-            <div class="p-info">
-                <h3>Funny Stickers</h3>
-                <p class="price">R 3.00</p>
-                <button class="btn-add" onclick="addItem('Funny Stickers', 3)">Add to Box</button>
-            </div>
-        </div>
-
         <div class="product-card essentials">
             <div class="p-img" style="background-image: url('1000076806.jpg');"></div>
             <div class="p-info">
                 <h3>Big Satin Scrunchie</h3>
                 <p class="price">R 12.00</p>
                 <button class="btn-add" onclick="addItem('Big Satin Scrunchie', 12)">Add to Box</button>
-            </div>
-        </div>
-
-        <div class="product-card essentials">
-            <div class="p-img" style="background-image: url('1000076803.jpg');"></div>
-            <div class="p-info">
-                <h3>Satin Hair Ties</h3>
-                <p class="price">R 10.00</p>
-                <button class="btn-add" onclick="addItem('Satin Hair Ties', 10)">Add to Box</button>
-            </div>
-        </div>
-
-        <div class="product-card essentials">
-            <div class="p-img" style="background-image: url('1000076863.jpg');"></div>
-            <div class="p-info">
-                <h3>Mini Clips</h3>
-                <p class="price">R 6.00</p>
-                <button class="btn-add" onclick="addItem('Mini Clips', 6)">Add to Box</button>
             </div>
         </div>
 
@@ -169,37 +84,13 @@
             <div class="p-info">
                 <h3>Perfume Hand Cream</h3>
                 <p class="price">R 30.00</p>
-                <select class="p-select" id="variant-perfume hand cream">
+                <select class="p-select" id="variant-hand-cream">
                     <option value="Yara Pink">Yara Pink</option>
-                    <option value="Yara Orange ">Yara Orange</option>
+                    <option value="Yara Orange">Yara Orange</option>
                     <option value="Yara Candy">Yara Candy</option>
-                     <option value="Asad">Asad</option>
-                    <option value="Asad Black">Asad Black</option>
+                    <option value="Asad">Asad</option>
                 </select>
-                <button class="btn-add" onclick="addItem('Perfume Hand Cream',30, null, 'variant-perfume hand cream')">Add to Box</button>
-            </div>
-        </div>
-
-        <div class="product-card selfcare">
-            <div class="p-img" style="background-image: url('1000076827.jpg');"></div>
-            <div class="p-info">
-                <h3>Men's Electric Razor</h3>
-                <p class="price">R 110.00</p>
-                <button class="btn-add" onclick="addItem('Electric Razor', 110)">Add to Box</button>
-            </div>
-        </div>
-
-        <div class="product-card selfcare">
-            <div class="p-img" style="background-image: url('IMG-20260314-WA0005.jpg');"></div>
-            <div class="p-info">
-                <h3>Usha Fruity Lip Gloss</h3>
-                <p class="price">R 25.00</p>
-         <select class="p-select" id="lipgloss">
-                    <option value="Strawberry">Strawberry</option>
-                    <option value="Peach">Peach</option>
-                    <option value="Avocado">Avocado</option>
-                </select>
-                <button class="btn-add" onclick="addItem('Lip gloss',25, null, 'variant-lipgloss')">Add to Box</button>
+                <button class="btn-add" onclick="addItem('Perfume Hand Cream', 30, null, 'variant-hand-cream')">Add to Box</button>
             </div>
         </div>
 
@@ -217,77 +108,17 @@
             </div>
         </div>
 
-        <div class="product-card bath">
-            <div class="p-img" style="background-image: url('1000076854.jpg');"></div>
-            <div class="p-info">
-                <h3>Perfume Oil</h3>
-                <p class="price">R 55.00</p>
-                   <select class="p-select" id="variant-perfume oil">
-                    <option value="Yara White">Yara White</option>
-                    <option value="Yara Pink">Yara Pink</option>
-                    <option value="Yara Orange">Yara Orange</option>
-                      <option value="Asad">Asad</option>
-                    <option value="Asad Black">Asad Black</option> 
-                </select>
-                <button class="btn-add" onclick="addItem('perfume oil',55, null, 'variant-perfume oil')">Add to Box</button>
-            </div>
-        </div>
-
-        <div class="product-card selfcare">
-            <div class="p-img" style="background-image: url('1000076857.jpg');"></div>
-            <div class="p-info">
-                <h3>Perfume</h3>
-                <p class="price">R 120.00</p>
-      <select class="p-select" id="variant-perfume oil">
-                    <option value="Ameerat AL Arab Pink">Ameerat AL Arab Pink</option>
-                    <option value="Ameerat AL Arab Maroon">Rose</option>
-                    <option value="Dirham Wardi">Dirham Wardi</option>
-                   <option value="Asad Black">Asad Black</option>
-                </select>
-                <button class="btn-add" onclick="addItem('perfume oil',55, null, 'variant-perfume oil')">Add to Box</button>
-            </div>
-        </div>
-
         <div class="product-card selfcare">
             <div class="p-img" style="background-image: url('1000076830.jpg');"></div>
             <div class="p-info">
                 <h3>Sherbet Body Scrub</h3>
                 <p class="price">R 75.00</p>
-                <select class="p-select" id="variant-Sherbet Body Scrub">
+                <select class="p-select" id="variant-sherbet">
                     <option value="Mint">Mint</option>
                     <option value="Rasberry">Rasberry</option>
                     <option value="Coconut">Coconut</option>
                 </select>
-                <button class="btn-add" onclick="addItem('Sherbet Body Scrub',75, null, 'variant-Sherbet Body Scrub')">Add to Box</button>
-            </div>
-        </div>
-
-        <div class="product-card selfcare">
-            <div class="p-img" style="background-image: url('IMG-20260314-WA0021.jpg');"></div>
-            <div class="p-info">
-                <h3>Exfoliating Body Scrub</h3>
-                <p class="price">R 90.00</p>
-                 <select class="p-select" id="variant-Exfoliating Body Scrub">
-                    <option value="Coconut">Coconut</option>
-                    <option value="Turmeric">Tumeric</option>
-                    <option value="Coffee">Coffee</option>
-                     <option value="Charcoal">Charcoal</option>
-                    <option value="Himalayan">Himalayan</option>
-                </select>
-                <button class="btn-add" onclick="addItem('Exfoliating Body Scrub',90, null, 'variant-Exfoliating Body Scrub')">Add to Box</button>
-            </div>
-        </div>
-
-        <div class="product-card drinkware">
-            <div class="p-img" style="background-image: url('IMG-20260314-WA0001.jpg');"></div>
-            <div class="p-info">
-                <h3>Water Bottle</h3>
-                <p class="price">R 80.00</p>
-                <select class="p-select" id="bottle-size">
-                    <option value="500ml">500ml</option>
-                    <option value="750ml">750ml</option>
-                </select>
-                <button class="btn-add" onclick="addItem('Water Bottle', 80, null, 'bottle-size')">Add to Box</button>
+                <button class="btn-add" onclick="addItem('Sherbet Body Scrub', 75, null, 'variant-sherbet')">Add to Box</button>
             </div>
         </div>
 
@@ -300,39 +131,8 @@
             </div>
         </div>
 
-        <div class="product-card drinkware">
-            <div class="p-img" style="background-image: url('1000076774.jpg');"></div>
-            <div class="p-info">
-                <h3>Flower Double Wall Mug</h3>
-                <p class="price">R 120.00</p>
-                <button class="btn-add" onclick="addItem('Flower Mug', 120)">Add to Box</button>
-            </div>
-        </div>
-
-        <div class="product-card drinkware">
-            <div class="p-img" style="background-image: url('1000076779.jpg');"></div>
-            <div class="p-info">
-                <h3>Plain Double Wall Mug</h3>
-                <p class="price">R 120.00</p>
-                <button class="btn-add" onclick="addItem('Plain Mug', 120)">Add to Box</button>
-            </div>
-        </div>
-
     </section>
 
     <script src="script.js"></script>
-    <script>
-        function filterCategory(cat, btn) {
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            document.querySelectorAll('.product-card').forEach(card => {
-                if (cat === 'all' || card.classList.contains(cat)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-    </script>
 </body>
 </html>
