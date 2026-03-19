@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Review | Ziyah Bliss Co.</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        .p-input, .p-select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        .btn-whatsapp {
+            width: 100%;
+            background: #25D366;
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #f9f9f9;
+        }
+    </style>
+</head>
+<body class="neutral-bg">
+
+    <nav class="navbar">
+        <div class="logo">ZIYAH BLISS</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="faq.html">Order Review (<span id="cart-count">0</span>)</a></li>
+        </ul>
+    </nav>
+
+    <div class="faq-container" style="max-width: 800px; margin: 60px auto; padding: 0 5%;">
+        <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 30px; text-align: center;">Review Your Box</h2>
+        
+        <div id="cart-display" class="order-summary-card" style="background: white; padding: 30px; border-radius: 24px; box-shadow: var(--shadow); margin-bottom: 30px;">
+            </div>
+
+        <div class="checkout-card" style="background: white; padding: 40px; border-radius: 24px; box-shadow: var(--shadow);">
+            <h3 style="margin-bottom: 20px; font-weight: 600;">Shipping Details</h3>
+            
+            <input type="text" id="cust-name" placeholder="Full Name" class="p-input">
+            <input type="text" id="cust-address" placeholder="Delivery Address / Pargo Point" class="p-input">
+            
+            <select class="p-select" id="shipping-method">
+                <option value="0">Select Shipping Method</option>
+                <option value="100">The Courier Guy (R100.00)</option>
+                <option value="60">Standard Delivery (Paxi) (R60.00)</option>
+            </select>
+
+            <div id="pricing-summary" style="margin: 25px 0; border-top: 1px solid #eee; padding-top: 20px;">
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                    <span>Items Total:</span> <strong id="items-total">R 0.00</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                    <span>Packaging:</span> <strong>R 50.00</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; margin-bottom:10px;">
+                    <span>Shipping:</span> <strong id="shipping-display">R 0.00</strong>
+                </div>
+                <div style="display:flex; justify-content:space-between; font-size: 1.4rem; margin-top: 15px; color: #57534e;">
+                    <strong>Total:</strong> <strong id="final-total">R 0.00</strong>
+                </div>
+            </div>
+
+            <button class="btn-whatsapp" onclick="sendWhatsApp()">Send Order to WhatsApp</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

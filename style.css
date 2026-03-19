@@ -1,0 +1,181 @@
+/* --- Global Brand Variables --- */
+:root {
+    --accent: #d8bfd8;      /* Light Purple / Thistle */
+    --accent-hover: #cda4cd; /* Slightly darker purple for hover */
+    --text: #57534e;        /* Dark Stone */
+    --bg: #fdfbf9;          /* Cream */
+    --white: #ffffff;
+    --shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+/* Update your button styles to use these colors */
+.btn-primary, .btn-add, .btn-shop {
+    background-color: var(--accent);
+    color: white; /* You can change this to var(--text) if white is hard to read on light purple */
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary:hover, .btn-add:hover, .btn-shop:hover {
+    background-color: var(--accent-hover);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
+
+/* --- Navigation --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 8%;
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+}
+
+.nav-links { display: flex; list-style: none; gap: 30px; }
+.nav-links a { text-decoration: none; color: var(--text); font-weight: 600; }
+
+/* --- Hero Section (Home) --- */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 8%;
+    gap: 40px;
+}
+
+.hero-content { flex: 1; }
+.hero-image { flex: 1; text-align: right; }
+.hero-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+}
+
+/* --- Shop Grid --- */
+
+.product-grid {
+    display: grid;
+    /* On desktop: 3 or 4 columns. auto-fit makes them wrap naturally */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 30px;
+    padding: 40px 8% 80px;
+}
+
+.product-card {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    
+    /* CRITICAL FIX: Ensure display is flex so JS 'flex' command works correctly */
+    display: flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    height: 100%; /* Makes all cards in a row the same height */
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.p-img {
+    width: 100%;
+    height: 250px; /* Fixed height for consistency */
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    flex-shrink: 0; /* Prevents image from squishing */
+}
+
+.p-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1; /* Pushes the button to the bottom */
+}
+
+/* --- Form Elements inside Cards --- */
+.p-input, .p-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #f3f0ee;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.price {
+    font-weight: 700;
+    color: var(--text);
+    font-size: 1.1rem;
+    margin: 5px 0;
+}
+
+/* --- Updated Mobile Grid Fix --- */
+@media (max-width: 768px) {
+    .product-grid {
+        /* Shows 2 items side-by-side on mobile */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 15px;
+        padding: 20px 4%;
+    }
+
+    .p-img {
+        height: 180px; /* Slightly shorter for mobile screens */
+    }
+    
+    .product-card {
+        padding: 12px; /* Less padding on mobile to save space */
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+}
+
+    /* FAQ/Checkout: Make inputs full width */
+    .faq-container, .cart-container {
+        padding: 20px 5%;
+    }
+
+.filter-btn {
+    background: white;
+    border: 1px solid #e5e7eb;
+    padding: 8px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background-color: var(--accent); /* This is your Light Purple */
+    color: white;
+    border-color: var(--accent);
+}
