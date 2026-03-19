@@ -51,6 +51,64 @@
                 <button class="btn-add" onclick="addItem('Sticky Notes+Pad', 85)">Add to Box</button>
             </div>
         </div>
+  <div class="product-card stationery">
+            <div class="p-img" style="background-image: url('IMG-20260319-WA0023.jpg');"></div>
+            <div class="p-info">
+                <h3>Incense Sticks(pack of 5)</h3>
+                <p class="price">R 15.00</p>
+                <button class="btn-add" onclick="addItem('Incense Sticks', 15)">Add to Box</button>
+            </div>
+        </div>
+
+         <div class="product-card stationery">
+            <div class="p-img" style="background-image: url('1000076788.jpg');"></div>
+            <div class="p-info">
+                <h3>Pocket hug</h3>
+                <p class="price">R 12.00</p>
+                <button class="btn-add" onclick="addItem('Pocket hug', 12)">Add to Box</button>
+            </div>
+        </div>
+
+         <div class="product-card stationery">
+            <div class="p-img" style="background-image: url('1000076839.jpg');"></div>
+            <div class="p-info">
+                <h3>Motivational cards</h3>
+                <p class="price">R3.00</p>
+                <button class="btn-add" onclick="addItem('Motivational cards',3)">Add to Box</button>
+            </div>
+        </div>
+
+          <div class="product-card stationery">
+            <div class="p-img" style="background-image: url('1000076824.jpg');"></div>
+            <div class="p-info">
+                <h3>Pocket Perfume</h3>
+                <p class="price">R50.00</p>
+                <select class="p-select" id="variant-pocket perfume">
+                    <option value="Yara White">Yara White</option>
+                    <option value="Yara Black">Yara Black</option>
+                    <option value="Hayaati">Hayaati</option>
+                  <option value="212 Men VIP">212 Men VIP</option>
+                <option value="Khamrah">Khamrah</option>
+                </select>
+                <button class="btn-add" onclick="addItem('pocket perfume', 50, null, 'variant-pocket perfume')">Add to Box</button>
+           </div>
+    
+        <div class="product-card stationery">
+            <div class="p-img" style="background-image: url('1000076824.jpg');"></div>
+            <div class="p-info">
+                <h3>Body spray</h3>
+                <p class="price">R80.00</p>
+                <select class="p-select" id="variant-mist">
+                    <option value="Yara Orange ">Yara Orange</option>
+                    <option value="Yara White">Yara White</option>
+                    <option value="Ameerat AI Arab Maroon">Ameerat AI Arab Maroon</option>
+                    <option value="Asad Black">Asad Black</option>
+                    <option value="Yara Pink">Yara Pink</option>
+                </select>
+                <button class="btn-add" onclick="addItem('Body Mist', 80, null, 'variant-mist')">Add to Box</button>
+           </div>
+        </div>
+        
 
         <div class="product-card stationery">
             <div class="p-img" style="background-image: url('1000078003.jpg');"></div>
@@ -111,7 +169,14 @@
             <div class="p-info">
                 <h3>Perfume Hand Cream</h3>
                 <p class="price">R 30.00</p>
-                <button class="btn-add" onclick="addItem('Perfume Hand Cream', 30)">Add to Box</button>
+                <select class="p-select" id="variant-perfume hand cream">
+                    <option value="Yara Pink">Yara Pink</option>
+                    <option value="Yara Orange ">Yara Orange</option>
+                    <option value="Yara Candy">Yara Candy</option>
+                     <option value="Asad">Asad</option>
+                    <option value="Asad Black">Asad Black</option>
+                </select>
+                <button class="btn-add" onclick="addItem('Perfume Hand Cream',30, null, 'variant-perfume hand cream')">Add to Box</button>
             </div>
         </div>
 
@@ -129,7 +194,12 @@
             <div class="p-info">
                 <h3>Usha Fruity Lip Gloss</h3>
                 <p class="price">R 25.00</p>
-                <button class="btn-add" onclick="addItem('Usha Fruity Lip Gloss', 25)">Add to Box</button>
+         <select class="p-select" id="lipgloss">
+                    <option value="Strawberry">Strawberry</option>
+                    <option value="Peach">Peach</option>
+                    <option value="Avocado">Avocado</option>
+                </select>
+                <button class="btn-add" onclick="addItem('Lip gloss',25, null, 'variant-lipgloss')">Add to Box</button>
             </div>
         </div>
 
@@ -139,9 +209,9 @@
                 <h3>Body Mist</h3>
                 <p class="price">R 80.00</p>
                 <select class="p-select" id="variant-mist">
-                    <option value="Vanilla">Vanilla</option>
-                    <option value="Rose">Rose</option>
-                    <option value="Lavender">Lavender</option>
+                    <option value="Vanilla Coconut">Vanilla Coconut</option>
+                    <option value="Dragon Fruit">Dragon Fruit</option>
+                    <option value="Violet Moon">Violet Moon</option>
                 </select>
                 <button class="btn-add" onclick="addItem('Body Mist', 80, null, 'variant-mist')">Add to Box</button>
             </div>
@@ -152,7 +222,14 @@
             <div class="p-info">
                 <h3>Perfume Oil</h3>
                 <p class="price">R 55.00</p>
-                <button class="btn-add" onclick="addItem('Perfume Oil', 55)">Add to Box</button>
+                   <select class="p-select" id="variant-perfume oil">
+                    <option value="Yara White">Yara White</option>
+                    <option value="Yara Pink">Yara Pink</option>
+                    <option value="Yara Orange">Yara Orange</option>
+                      <option value="Asad">Asad</option>
+                    <option value="Asad Black">Asad Black</option> 
+                </select>
+                <button class="btn-add" onclick="addItem('perfume oil',55, null, 'variant-perfume oil')">Add to Box</button>
             </div>
         </div>
 
@@ -161,7 +238,13 @@
             <div class="p-info">
                 <h3>Perfume</h3>
                 <p class="price">R 120.00</p>
-                <button class="btn-add" onclick="addItem('Perfume', 120)">Add to Box</button>
+      <select class="p-select" id="variant-perfume oil">
+                    <option value="Ameerat AL Arab Pink">Ameerat AL Arab Pink</option>
+                    <option value="Ameerat AL Arab Maroon">Rose</option>
+                    <option value="Dirham Wardi">Dirham Wardi</option>
+                   <option value="Asad Black">Asad Black</option>
+                </select>
+                <button class="btn-add" onclick="addItem('perfume oil',55, null, 'variant-perfume oil')">Add to Box</button>
             </div>
         </div>
 
@@ -170,7 +253,12 @@
             <div class="p-info">
                 <h3>Sherbet Body Scrub</h3>
                 <p class="price">R 75.00</p>
-                <button class="btn-add" onclick="addItem('Sherbet Body Scrub', 75)">Add to Box</button>
+                <select class="p-select" id="variant-Sherbet Body Scrub">
+                    <option value="Mint">Mint</option>
+                    <option value="Rasberry">Rasberry</option>
+                    <option value="Coconut">Coconut</option>
+                </select>
+                <button class="btn-add" onclick="addItem('Sherbet Body Scrub',75, null, 'variant-Sherbet Body Scrub')">Add to Box</button>
             </div>
         </div>
 
@@ -179,7 +267,14 @@
             <div class="p-info">
                 <h3>Exfoliating Body Scrub</h3>
                 <p class="price">R 90.00</p>
-                <button class="btn-add" onclick="addItem('Exfoliating Scrub', 90)">Add to Box</button>
+                 <select class="p-select" id="variant-Exfoliating Body Scrub">
+                    <option value="Coconut">Coconut</option>
+                    <option value="Turmeric">Tumeric</option>
+                    <option value="Coffee">Coffee</option>
+                     <option value="Charcoal">Charcoal</option>
+                    <option value="Himalayan">Himalayan</option>
+                </select>
+                <button class="btn-add" onclick="addItem('Exfoliating Body Scrub',90, null, 'variant-Exfoliating Body Scrub')">Add to Box</button>
             </div>
         </div>
 
