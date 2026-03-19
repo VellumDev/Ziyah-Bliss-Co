@@ -1,15 +1,19 @@
 /* --- 1. GLOBAL BRAND VARIABLES --- */
 :root {
-    --accent: #d8bfd8;       /* Light Purple / Thistle */
-    --accent-hover: #cda4cd;  /* Darker purple */
-    --text: #57534e;         /* Dark Stone */
-    --bg: #fdfbf9;           /* Cream */
+    --accent: #d8bfd8;         /* Light Purple / Thistle */
+    --accent-hover: #cda4cd;   /* Darker purple */
+    --text: #57534e;           /* Dark Stone */
+    --bg: #fdfbf9;             /* Cream */
     --white: #ffffff;
     --shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
 /* --- 2. BASE STYLES --- */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+}
 
 body {
     font-family: 'Plus Jakarta Sans', sans-serif;
@@ -19,7 +23,9 @@ body {
     overflow-x: hidden;
 }
 
-h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
+h1, h2, h3, .logo { 
+    font-family: 'Playfair Display', serif; 
+}
 
 /* --- 3. NAVIGATION --- */
 .navbar {
@@ -34,45 +40,74 @@ h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
     box-shadow: 0 2px 10px rgba(0,0,0,0.02);
 }
 
-.nav-links { display: flex; list-style: none; gap: 30px; }
-.nav-links a { text-decoration: none; color: var(--text); font-weight: 600; }
-
-/* --- 4. FULLSCREEN HERO (Home Page) --- */
-.hero-fullscreen {
-    position: relative;
-    height: 90vh;
-    background: url('hero-placeholder.jpg') no-repeat center center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.nav-links { 
+    display: flex; 
+    list-style: none; 
+    gap: 30px; 
 }
 
-.hero-overlay {
-    background: rgba(0, 0, 0, 0.3);
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.nav-links a { 
+    text-decoration: none; 
+    color: var(--text); 
+    font-weight: 600; 
 }
 
-.hero-content-center { text-align: center; color: white; padding: 0 5%; }
-.hero-content-center h1 { font-size: 3.5rem; margin-bottom: 15px; }
+/* --- 4. FILTER BUTTONS --- */
+.category-nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+    padding: 0 5%;
+}
 
-/* --- 5. SHOP GRID & CARDS (Shop Page) --- */
+.filter-btn {
+    background: var(--white);
+    border: 1px solid var(--accent);
+    color: var(--text);
+    padding: 10px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background-color: var(--accent);
+    color: white;
+    box-shadow: 0 4px 12px rgba(216, 191, 216, 0.3);
+}
+
+/* --- 5. PRODUCT GRID & CARDS --- */
 .product-grid {
     display: grid;
+    /* auto-fit makes the grid "smart" - it fills rows automatically */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
-    padding: 40px 8%;
+    padding: 40px 8% 80px;
+    align-items: stretch;
 }
 
 .product-card {
-    background: white;
+    background: var(--white);
     padding: 20px;
     border-radius: 20px;
     box-shadow: var(--shadow);
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* This is the key for JavaScript filtering: 
+   When JS sets display to 'none', the card vanishes from the grid flow. */
+.product-card[style*="display: none"] {
+    display: none !important;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
 }
 
 .p-img {
@@ -84,40 +119,73 @@ h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
     margin-bottom: 15px;
 }
 
-/* --- 6. CHECKOUT & FORMS (Review Box Page) --- */
-.faq-container { max-width: 800px; margin: 60px auto; padding: 0 5%; }
-
-.p-input, .p-select {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    font-family: inherit;
+.p-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
 }
 
-.btn-whatsapp, .btn-primary {
+.price {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text);
+}
+
+/* --- 6. BUTTONS & INPUTS --- */
+.btn-add {
     background-color: var(--accent);
     color: white;
     border: none;
-    padding: 15px 40px;
-    border-radius: 50px;
+    padding: 14px;
+    border-radius: 12px;
     font-weight: 600;
     cursor: pointer;
-    width: 100%; /* Full width for mobile/forms */
-    text-decoration: none;
-    display: inline-block;
+    transition: background 0.3s;
+    margin-top: auto; /* Pushes button to bottom of card */
 }
 
-/* --- 7. REVIEWS --- */
-.reviews-section { padding: 80px 8%; background: var(--white); }
-.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-.review-card { background: var(--bg); padding: 30px; border-radius: 20px; text-align: center; }
+.btn-add:hover {
+    background-color: var(--accent-hover);
+}
 
-/* --- 8. MOBILE FIXES --- */
+.p-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    font-family: inherit;
+    background: #fafafa;
+}
+
+/* --- 7. MOBILE OPTIMIZATION --- */
 @media (max-width: 768px) {
-    .navbar { flex-direction: column; padding: 15px; gap: 10px; }
-    .nav-links { gap: 15px; font-size: 0.8rem; }
-    .hero-content-center h1 { font-size: 2.2rem; }
-    .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .navbar {
+        padding: 15px 5%;
+    }
+    
+    .nav-links {
+        gap: 15px;
+        font-size: 0.9rem;
+    }
+
+    .product-grid {
+        /* Shows 2 items side-by-side on small screens */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        padding: 20px 4%;
+    }
+
+    .p-img {
+        height: 180px;
+    }
+
+    .product-card {
+        padding: 12px;
+    }
+
+    .filter-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
 }
