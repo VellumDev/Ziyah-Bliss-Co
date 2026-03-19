@@ -57,38 +57,45 @@ h1, h2, h3, .logo {
     color: var(--accent);
 }
 
-/* --- 4. HERO SECTION (Home Page) --- */
-.hero {
+/* --- 4. FULLSCREEN HERO (Home Page) --- */
+.hero-fullscreen {
+    position: relative;
+    height: 90vh;
+    background: url('hero-placeholder.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 80px 8%;
-    gap: 40px;
-    min-height: 80vh;
+    justify-content: center;
 }
 
-.hero-content { flex: 1; }
-
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 20px;
-    line-height: 1.1;
-}
-
-.hero-image { 
-    flex: 1; 
-    text-align: right; 
-}
-
-.hero-image img {
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.3); /* Darkens image so text is readable */
     width: 100%;
-    max-width: 500px;
-    border-radius: 30px;
-    box-shadow: var(--shadow);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 5%;
+}
+
+.hero-text-center {
+    text-align: center;
+    color: white;
+}
+
+.hero-text-center h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.hero-text-center p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    max-width: 600px;
 }
 
 /* --- 5. BUTTONS --- */
-.btn-primary, .btn-add, .btn-shop, .btn-whatsapp {
+.btn-primary, .btn-add, .btn-whatsapp {
     background-color: var(--accent);
     color: white;
     border: none;
@@ -102,12 +109,12 @@ h1, h2, h3, .logo {
     text-align: center;
 }
 
-.btn-primary:hover, .btn-add:hover, .btn-shop:hover {
+.btn-primary:hover, .btn-add:hover {
     background-color: var(--accent-hover);
     transform: translateY(-2px);
 }
 
-/* --- 6. SHOP GRID & CARDS --- */
+/* --- 6. SHOP GRID & CARDS (Shop Page) --- */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -141,31 +148,34 @@ h1, h2, h3, .logo {
 
 .p-select, .p-input {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin: 10px 0;
     border: 1px solid #eee;
     border-radius: 10px;
     font-family: inherit;
 }
 
-/* --- 7. FILTER BUTTONS --- */
-.filter-btn {
-    background: white;
-    border: 1px solid #e5e7eb;
-    padding: 8px 20px;
-    border-radius: 50px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.3s;
+/* --- 7. REVIEWS SECTION (Home Page) --- */
+.reviews-section {
+    padding: 80px 8%;
+    background: var(--white);
 }
 
-.filter-btn.active, .filter-btn:hover {
-    background-color: var(--accent);
-    color: white;
-    border-color: var(--accent);
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
 }
 
-/* --- 8. MOBILE RESPONSIVENESS (The Fix) --- */
+.review-card {
+    background: var(--bg);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+/* --- 8. MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
     .navbar {
         flex-direction: column;
@@ -175,19 +185,10 @@ h1, h2, h3, .logo {
 
     .nav-links { gap: 15px; font-size: 0.8rem; }
 
-    .hero {
-        flex-direction: column; /* Stack image then text */
-        text-align: center;
-        padding: 40px 5%;
-    }
-
-    .hero-image { order: 1; width: 100%; }
-    .hero-content { order: 2; }
-
-    .hero h1 { font-size: 2.2rem; }
+    .hero-text-center h1 { font-size: 2.2rem; }
 
     .product-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 items side-by-side */
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row on mobile */
         gap: 15px;
         padding: 20px 5%;
     }
@@ -197,7 +198,7 @@ h1, h2, h3, .logo {
 
 @media (max-width: 480px) {
     .product-grid {
-        grid-template-columns: 1fr; /* 1 item per row on very small phones */
+        grid-template-columns: 1fr; /* 1 item per row on small phones */
     }
 }
 
