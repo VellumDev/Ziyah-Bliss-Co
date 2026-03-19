@@ -1,28 +1,15 @@
-// 1. Initialize Cart
+// --- 1. INITIALIZE DATA ---
+// Load cart from storage or start with empty array
 let cart = JSON.parse(localStorage.getItem('ziyahBox')) || [];
 
-// 2. Render Products (NEW: Integrated for Shop Filtering)
-function renderProducts(productsToRender) {
-    const grid = document.querySelector('.product-grid');
-    if (!grid) return;
+// --- 2. SHOPPING CART CORE ---
 
-    grid.innerHTML = productsToRender.map(p => `
-        <div class="product-card">
-            <div class="p-img" style="background-image: url('${p.image}')"></div>
-            <div class="p-info">
-                <h3>${p.name}</h3>
-                <p class="price">R ${p.price.toFixed(2)}</p>
-                <button class="btn-add" onclick="addItem('${p.name}', ${p.price})">Add to Box</button>
-            </div>
-        </div>
-    `).join('');
-}
-
-// 3. Add Item
+// Function to add items to the box
 function addItem(name, price, inputId = null, selectId = null) {
     let extraInfo = "";
     let noteText = "Standard";
     
+    // Check for text inputs (like custom messages)
     if (inputId) {
         const inputEl = document.getElementById(inputId);
         if (inputEl && inputEl.value.trim() !== "") {
@@ -31,6 +18,7 @@ function addItem(name, price, inputId = null, selectId = null) {
         }
     }
     
+    // Check for dropdown selections (variants/flavors/scents)
     if (selectId) {
         const selectEl = document.getElementById(selectId);
         if (selectEl) {
@@ -49,30 +37,45 @@ function addItem(name, price, inputId = null, selectId = null) {
     save();
     updateCartCounter();
     alert(`${item.name} has been added to your box!`);
-    
-    if (inputId && document.getElementById(inputId)) {
-        document.getElementById(inputId).value = "";
-    }
 }
 
-// 4. Save to Local Storage
+// Save cart to browser memory
 function save() {
     localStorage.setItem('ziyahBox', JSON.stringify(cart));
 }
 
-// 5. Update Counter
+// Update the (0) number in the navigation bar
 function updateCartCounter() {
     const counter = document.getElementById('cart-count');
     if (counter) counter.innerText = cart.length;
 }
 
-// 6. Render Order Review Page (faq.html)
+// --- 3. FILTER LOGIC (For Shop Page) ---
+
+function filterCategory(cat, btn) {
+    // Switch 'active' class on buttons
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Show/Hide cards based on category class
+    const cards = document.querySelectorAll('.product-card');
+    cards.forEach(card => {
+        if (cat === 'all' || card.classList.contains(cat)) {
+            card.style.display = 'block'; // Ensures it follows grid rules
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+// --- 4. ORDER REVIEW & TOTALS (For faq.html / Review Box) ---
+
 function renderOrderReview() {
     const display = document.getElementById('cart-display');
     if (!display) return; 
 
     if (cart.length === 0) {
-        display.innerHTML = `<p style="text-align:center; padding: 20px;">Your box is empty. <a href="index.html" style="color: #d8bfd8; font-weight: bold;">Go shopping!</a></p>`;
+        display.innerHTML = `<p style="text-align:center; padding: 20px;">Your box is empty. <a href="shop.html" style="color: #d8bfd8; font-weight: bold;">Go shopping!</a></p>`;
         updateTotals();
         return;
     }
@@ -91,10 +94,8 @@ function renderOrderReview() {
     updateTotals();
 }
 
-// 7. Integrated Totals & Shipping
 function updateTotals() {
     const PACKAGING_FEE = 50.00;
-    
     const subtotal = cart.reduce((sum, item) => sum + item.price, 0);
     
     const shippingSelect = document.getElementById('shipping-method');
@@ -108,11 +109,9 @@ function updateTotals() {
     if (shippingDisplayEl) shippingDisplayEl.innerText = `R ${shippingFee.toFixed(2)}`;
     
     const totalPayable = subtotal + PACKAGING_FEE + shippingFee;
-    
     if (finalTotalEl) finalTotalEl.innerText = `R ${totalPayable.toFixed(2)}`;
 }
 
-// 8. Remove Item
 function removeItem(index) {
     cart.splice(index, 1);
     save();
@@ -120,7 +119,8 @@ function removeItem(index) {
     renderOrderReview();
 }
 
-// 9. WhatsApp Integration
+// --- 5. WHATSAPP CHECKOUT ---
+
 function sendWhatsApp() {
     const PACKAGING_FEE = 50.00;
     const nameInput = document.getElementById('cust-name');
@@ -154,11 +154,17 @@ function sendWhatsApp() {
     window.open(`https://wa.me/27662452548?text=${message}`, '_blank');
 }
 
-// 10. Initialize
+// --- 6. PAGE LOAD INITIALIZATION ---
+
 document.addEventListener('DOMContentLoaded', () => {
     updateCartCounter();
-    renderOrderReview();
     
+    // Only runs if the review elements exist (Review Box page)
+    if (document.getElementById('cart-display')) {
+        renderOrderReview();
+    }
+    
+    // Listen for shipping changes to update price instantly
     const shipSelect = document.getElementById('shipping-method');
     if (shipSelect) {
         shipSelect.addEventListener('change', updateTotals);
