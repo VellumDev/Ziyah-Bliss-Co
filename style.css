@@ -205,14 +205,55 @@ h1, h2, h3, .logo {
 
 /* --- 8. MOBILE OPTIMIZATION --- */
 @media (max-width: 768px) {
-    .navbar { padding: 15px 5%; }
-    .nav-links { display: none; }
-    
-    .hero-fullscreen { height: 70vh; }
-    .hero-content-center h1 { font-size: 2.5rem; }
+    .navbar { 
+        padding: 15px 5%; 
+        position: relative;
+    }
 
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
+    /* Create the hamburger button style */
+    .mobile-menu-toggle {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+    }
+
+    .mobile-menu-toggle .bar {
+        width: 25px;
+        height: 3px;
+        background-color: var(--text);
+        border-radius: 2px;
+    }
+
+    /* Make the links a vertical dropdown */
+    .nav-links {
+        display: none; /* Hidden by default */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        text-align: center;
+        gap: 20px;
+    }
+
+    /* This class will be toggled by JavaScript */
+    .nav-links.active {
+        display: flex;
+    }
+
+    .hero-fullscreen { height: 60vh; }
+    .hero-content-center h1 { font-size: 2.2rem; }
+}
+
+/* Hide toggle on desktop */
+@media (min-width: 769px) {
+    .mobile-menu-toggle {
+        display: none;
     }
 }
