@@ -52,7 +52,47 @@ h1, h2, h3, .logo {
     font-weight: 600; 
 }
 
-/* --- 4. FILTER BUTTONS --- */
+/* --- 4. HERO SECTION (HOME PAGE FIX) --- */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 80px 8%;
+    gap: 40px;
+    max-width: 1400px; /* Prevents text from stretching too far on wide screens */
+    margin: 0 auto;
+}
+
+.hero-content { 
+    flex: 1; 
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    max-width: 450px;
+}
+
+.hero-image { 
+    flex: 1; 
+    text-align: right; 
+}
+
+.hero-image img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+}
+
+/* --- 5. CATEGORY NAV & FILTERS --- */
 .category-nav {
     display: flex;
     justify-content: center;
@@ -79,10 +119,9 @@ h1, h2, h3, .logo {
     box-shadow: 0 4px 12px rgba(216, 191, 216, 0.3);
 }
 
-/* --- 5. PRODUCT GRID & CARDS --- */
+/* --- 6. PRODUCT GRID & CARDS --- */
 .product-grid {
     display: grid;
-    /* auto-fit makes the grid "smart" - it fills rows automatically */
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
     padding: 40px 8% 80px;
@@ -99,8 +138,7 @@ h1, h2, h3, .logo {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* This is the key for JavaScript filtering: 
-   When JS sets display to 'none', the card vanishes from the grid flow. */
+/* Key for JS filtering */
 .product-card[style*="display: none"] {
     display: none !important;
 }
@@ -132,24 +170,27 @@ h1, h2, h3, .logo {
     color: var(--text);
 }
 
-/* --- 6. BUTTONS & INPUTS --- */
-.btn-add {
+/* --- 7. BUTTONS & INPUTS --- */
+.btn-add, .btn-shop {
     background-color: var(--accent);
     color: white;
     border: none;
-    padding: 14px;
-    border-radius: 12px;
+    padding: 14px 28px;
+    border-radius: 50px;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.3s;
-    margin-top: auto; /* Pushes button to bottom of card */
+    margin-top: auto;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
 }
 
-.btn-add:hover {
+.btn-add:hover, .btn-shop:hover {
     background-color: var(--accent-hover);
 }
 
-.p-select {
+.p-select, .p-input {
     width: 100%;
     padding: 10px;
     border: 1px solid #eee;
@@ -158,34 +199,45 @@ h1, h2, h3, .logo {
     background: #fafafa;
 }
 
-/* --- 7. MOBILE OPTIMIZATION --- */
+/* --- 8. TESTIMONIALS (HOME PAGE) --- */
+.testimonials {
+    text-align: center;
+    padding: 60px 8%;
+    background: #fff;
+}
+
+.testimonials h2 {
+    margin-bottom: 40px;
+}
+
+.testimonial-item {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    font-style: italic;
+    color: var(--text);
+}
+
+/* --- 9. MOBILE OPTIMIZATION --- */
 @media (max-width: 768px) {
-    .navbar {
-        padding: 15px 5%;
-    }
-    
-    .nav-links {
-        gap: 15px;
-        font-size: 0.9rem;
+    .navbar { padding: 15px 5%; }
+    .nav-links { gap: 15px; font-size: 0.9rem; }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 8%;
     }
 
+    .hero h1 { font-size: 2.2rem; }
+    .hero-content { max-width: 100%; }
+    .hero-image { order: -1; } /* Image comes first on mobile */
+
     .product-grid {
-        /* Shows 2 items side-by-side on small screens */
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
         padding: 20px 4%;
     }
 
-    .p-img {
-        height: 180px;
-    }
-
-    .product-card {
-        padding: 12px;
-    }
-
-    .filter-btn {
-        padding: 8px 16px;
-        font-size: 0.85rem;
-    }
+    .p-img { height: 180px; }
+    .product-card { padding: 12px; }
 }
