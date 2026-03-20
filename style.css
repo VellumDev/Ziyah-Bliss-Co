@@ -202,56 +202,58 @@ h1, h2, h3, .logo {
     background: var(--accent);
     color: white;
 }
-
-/* --- 8. MOBILE OPTIMIZATION --- */
+/* --- MOBILE NAVIGATION REWRITE --- */
 @media (max-width: 768px) {
-    .navbar { 
-        padding: 15px 5%; 
-        position: relative;
+    .navbar {
+        position: relative; /* Acts as an anchor for the menu */
+        justify-content: space-between;
     }
 
-    /* Create the hamburger button style */
-    .mobile-menu-toggle {
+    /* 1. Hide the original horizontal links */
+    .nav-links {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 100%; /* Sits exactly below the navbar */
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        padding: 20px 0;
+        box-shadow: 0 10px 15px rgba(0,0,0,0.05);
+        z-index: 2000;
+        gap: 15px;
+    }
+
+    /* 2. Show the links only when 'active' class is added via JS */
+    .nav-links.active {
         display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* 3. Style the Hamburger Button */
+    .mobile-menu-toggle {
+        display: flex !important;
         flex-direction: column;
         gap: 5px;
         background: none;
         border: none;
         cursor: pointer;
+        padding: 5px;
     }
 
     .mobile-menu-toggle .bar {
-        width: 25px;
-        height: 3px;
+        width: 22px;
+        height: 2px;
         background-color: var(--text);
-        border-radius: 2px;
+        transition: 0.3s;
     }
-
-    /* Make the links a vertical dropdown */
-    .nav-links {
-        display: none; /* Hidden by default */
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: var(--white);
-        padding: 20px;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        text-align: center;
-        gap: 20px;
-    }
-
-    /* This class will be toggled by JavaScript */
-    .nav-links.active {
-        display: flex;
-    }
-
-    .hero-fullscreen { height: 60vh; }
-    .hero-content-center h1 { font-size: 2.2rem; }
 }
 
-/* Hide toggle on desktop */
+/* 4. Ensure toggle is hidden on Desktop */
 @media (min-width: 769px) {
     .mobile-menu-toggle {
         display: none;
