@@ -1,14 +1,14 @@
 /* --- 1. GLOBAL BRAND VARIABLES --- */
 :root {
-    --accent: #d8bfd8;         /* Light Purple */
-    --accent-hover: #cda4cd;   /* Hover Purple */
+    --accent: #d8bfd8;         /* Light Purple / Thistle */
+    --accent-hover: #cda4cd;   /* Darker purple */
     --text: #57534e;           /* Dark Stone */
     --bg: #fdfbf9;             /* Cream */
     --white: #ffffff;
     --shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-/* --- 2. BASE RESET --- */
+/* --- 2. BASE STYLES --- */
 * { 
     box-sizing: border-box; 
     margin: 0; 
@@ -27,7 +27,7 @@ h1, h2, h3, .logo {
     font-family: 'Playfair Display', serif; 
 }
 
-/* --- 3. NAVIGATION --- */
+/* --- 3. SHARED NAVIGATION (All Pages) --- */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -52,113 +52,121 @@ h1, h2, h3, .logo {
     font-weight: 600; 
 }
 
-/* --- 4. HERO SECTION (HOME PAGE) --- */
-.hero {
+/* --- 4. HOME PAGE SPECIFIC STYLES --- */
+
+/* Hero Section */
+.hero-fullscreen {
+    position: relative;
+    height: 80vh;
+    background-color: #f3f0ee; /* Fallback if image fails */
+    background-image: url('hero-bg.jpg'); /* Replace with your actual hero image name */
+    background-size: cover;
+    background-position: center;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 60px 8%;
-    gap: 40px;
-    min-height: 80vh; /* Ensures it fills the screen nicely */
+    justify-content: center;
 }
 
-.hero-content { 
-    flex: 1; 
-    max-width: 550px; 
+.hero-overlay {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.2); /* Subtle light tint */
+    padding: 20px;
 }
 
-.hero h1 {
-    font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive font size */
+.hero-content-center {
+    text-align: center;
+    max-width: 800px;
+}
+
+.hero-content-center h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
     line-height: 1.1;
     margin-bottom: 20px;
     color: var(--text);
 }
 
-.hero p {
-    font-size: 1.15rem;
-    margin-bottom: 30px;
-    color: #78716c;
+.hero-content-center p {
+    font-size: 1.25rem;
+    margin-bottom: 35px;
+    color: #57534e;
 }
 
-.hero-image { 
-    flex: 1; 
-    display: flex;
-    justify-content: flex-end;
-}
-
-.hero-image img {
-    width: 100%;
-    max-width: 450px;
-    border-radius: 30px;
-    box-shadow: var(--shadow);
-    object-fit: cover;
-}
-
-/* --- 5. TESTIMONIALS SECTION --- */
-.testimonials {
+/* Reviews / Testimonials */
+.reviews-section {
     padding: 80px 8%;
     background-color: var(--white);
-    text-align: center;
 }
 
-.testimonials h2 {
-    margin-bottom: 40px;
-    font-size: 2rem;
-}
-
-.testimonial-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 800px;
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
-.testimonial-item {
+.review-card {
+    background: var(--bg);
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.review-card p {
     font-style: italic;
     font-size: 1.1rem;
-    padding: 20px;
-    border-bottom: 1px solid #f3f0ee;
+    margin-bottom: 20px;
 }
 
-/* --- 6. BUTTONS --- */
-.btn-add, .btn-shop {
-    background-color: var(--accent);
-    color: white;
-    border: none;
-    padding: 15px 35px;
-    border-radius: 50px;
+.review-card span {
     font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s ease;
-    text-decoration: none;
-    display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    color: var(--accent-hover);
 }
 
-.btn-add:hover {
-    background-color: var(--accent-hover);
-    transform: translateY(-2px);
+/* --- 5. SHOP PAGE SPECIFIC STYLES --- */
+
+.category-nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 30px 0;
+    flex-wrap: wrap;
 }
 
-/* --- 7. PRODUCT GRID (SHOP PAGE) --- */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
-    padding: 40px 8%;
+    padding: 40px 8% 80px;
 }
 
 .product-card {
-    background: white;
+    background: var(--white);
     padding: 20px;
     border-radius: 20px;
     box-shadow: var(--shadow);
     display: flex;
     flex-direction: column;
-    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover { transform: translateY(-5px); }
+
+/* Key for JS filtering */
+.product-card[style*="display: none"] {
+    display: none !important;
 }
 
 .p-img {
+    width: 100%;
     height: 250px;
     background-size: cover;
     background-position: center;
@@ -166,23 +174,66 @@ h1, h2, h3, .logo {
     margin-bottom: 15px;
 }
 
-/* --- 8. MOBILE RESPONSIVENESS --- */
+/* --- 6. GLOBAL BUTTONS --- */
+.btn-primary, .btn-add, .filter-btn {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+    border-radius: 50px;
+    display: inline-block;
+    border: none;
+}
+
+/* Large Hero Button */
+.btn-primary {
+    background-color: var(--accent);
+    color: white;
+    padding: 18px 45px;
+    font-size: 1rem;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+/* Filter/Category Buttons */
+.filter-btn {
+    background: var(--white);
+    border: 1px solid var(--accent);
+    padding: 10px 24px;
+    color: var(--text);
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--accent);
+    color: white;
+}
+
+/* Add to Box Button */
+.btn-add {
+    background: var(--accent);
+    color: white;
+    width: 100%;
+    padding: 14px;
+    margin-top: auto;
+}
+
+/* --- 7. MOBILE OPTIMIZATION --- */
 @media (max-width: 768px) {
-    .hero {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 40px;
-    }
-    
-    .hero-image {
-        order: -1; /* Image appears above text on mobile */
-        justify-content: center;
+    .navbar { padding: 15px 5%; }
+    .nav-links { gap: 15px; font-size: 0.85rem; }
+
+    .hero-fullscreen { height: 60vh; }
+    .hero-content-center h1 { font-size: 2.5rem; }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 items per row on mobile */
+        gap: 15px;
+        padding: 20px 4%;
     }
 
-    .nav-links { display: none; } /* Consider adding a burger menu later */
-    
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 15px;
-    }
+    .p-img { height: 180px; }
 }
