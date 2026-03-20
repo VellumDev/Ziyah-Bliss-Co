@@ -1,14 +1,14 @@
 /* --- 1. GLOBAL BRAND VARIABLES --- */
 :root {
-    --accent: #d8bfd8;
-    --accent-hover: #cda4cd;
-    --text: #57534e;
-    --bg: #fdfbf9;
+    --accent: #d8bfd8;         /* Light Purple */
+    --accent-hover: #cda4cd;   /* Darker purple */
+    --text: #57534e;           /* Dark Stone */
+    --bg: #fdfbf9;             /* Cream */
     --white: #ffffff;
     --shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-/* --- 2. BASE RESET --- */
+/* --- 2. BASE STYLES --- */
 * { 
     box-sizing: border-box; 
     margin: 0; 
@@ -20,11 +20,14 @@ body {
     background-color: var(--bg);
     color: var(--text);
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
+h1, h2, h3, .logo { 
+    font-family: 'Playfair Display', serif; 
+}
 
-/* --- 3. NAVIGATION --- */
+/* --- 3. NAVIGATION (Global) --- */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -34,29 +37,42 @@ h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
     position: sticky;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
 }
 
-.nav-links { display: flex; list-style: none; gap: 30px; }
-.nav-links a { text-decoration: none; color: var(--text); font-weight: 600; }
+.nav-links { 
+    display: flex; 
+    list-style: none; 
+    gap: 30px; 
+}
 
-/* --- 4. HERO SECTION (BACKGROUND IMAGE FIX) --- */
+.nav-links a { 
+    text-decoration: none; 
+    color: var(--text); 
+    font-weight: 600; 
+}
+
+/* --- 4. HOME PAGE: HERO SECTION --- */
 .hero-fullscreen {
     position: relative;
-    height: 90vh; /* Takes up most of the screen */
-    background-image: url('hero-placeholder.jpg'); /* MATCHES YOUR FILENAME */
+    width: 100%;
+    height: 90vh;
+    background-image: url('hero-placeholder.jpg'); /* Matches your uploaded file */
     background-size: cover;
     background-position: center;
-    background-attachment: fixed; /* Optional: adds a cool parallax effect */
+    background-repeat: no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .hero-overlay {
-    /* This makes the image darker so the white text is readable */
-    background: rgba(0, 0, 0, 0.4); 
+    background: rgba(0, 0, 0, 0.45); /* Darkens image for text readability */
     width: 100%;
     height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -64,61 +80,139 @@ h1, h2, h3, .logo { font-family: 'Playfair Display', serif; }
 }
 
 .hero-content-center {
+    position: relative;
+    z-index: 2;
     text-align: center;
+    color: #ffffff; /* White text on background image */
     max-width: 800px;
-    color: #ffffff; /* FORCE TEXT TO WHITE ONTOP OF IMAGE */
 }
 
 .hero-content-center h1 {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    line-height: 1.1;
     margin-bottom: 20px;
-    text-shadow: 2px 2px 10px rgba(0,0,0,0.3); /* Adds a shadow for extra readability */
 }
 
 .hero-content-center p {
     font-size: 1.25rem;
-    margin-bottom: 30px;
+    margin-bottom: 35px;
 }
 
-/* --- 5. REVIEWS SECTION (SEPARATED) --- */
+/* --- 5. REVIEWS SECTION (Separated) --- */
 .reviews-section {
     padding: 100px 8%;
-    background-color: #f7f3f0; /* DIFFERENT COLOR TO SEPARATE FROM HERO */
+    background-color: var(--white);
+    text-align: center;
 }
 
 .reviews-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
+    margin-top: 50px;
 }
 
 .review-card {
-    background: var(--white);
+    background: var(--bg);
     padding: 40px;
     border-radius: 20px;
-    text-align: center;
     box-shadow: var(--shadow);
 }
 
-/* --- 6. BUTTONS --- */
+.review-card p {
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+.review-card span {
+    font-weight: 600;
+    color: var(--accent-hover);
+}
+
+/* --- 6. SHOP PAGE: PRODUCT GRID & FILTERS --- */
+.category-nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 40px 0;
+    flex-wrap: wrap;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 40px 8%;
+}
+
+.product-card {
+    background: var(--white);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card[style*="display: none"] {
+    display: none !important;
+}
+
+.p-img {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+/* --- 7. BUTTONS & UI --- */
+.btn-primary, .btn-add, .filter-btn {
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    text-decoration: none;
+    border-radius: 50px;
+    border: none;
+    display: inline-block;
+}
+
 .btn-primary {
     background-color: var(--accent);
     color: white;
-    padding: 16px 40px;
-    border-radius: 50px;
-    font-weight: 600;
-    text-decoration: none;
-    display: inline-block;
-    transition: 0.3s;
+    padding: 18px 45px;
 }
 
-.btn-primary:hover {
-    background-color: var(--accent-hover);
-    transform: translateY(-3px);
+.btn-add {
+    background-color: var(--accent);
+    color: white;
+    width: 100%;
+    padding: 14px;
+    margin-top: auto;
 }
 
-/* --- 7. MOBILE --- */
+.filter-btn {
+    background: var(--white);
+    border: 1px solid var(--accent);
+    padding: 10px 24px;
+}
+
+.filter-btn.active, .filter-btn:hover {
+    background: var(--accent);
+    color: white;
+}
+
+/* --- 8. MOBILE OPTIMIZATION --- */
 @media (max-width: 768px) {
-    .hero-fullscreen { height: 70vh; }
+    .navbar { padding: 15px 5%; }
     .nav-links { display: none; }
+    
+    .hero-fullscreen { height: 70vh; }
+    .hero-content-center h1 { font-size: 2.5rem; }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
 }
