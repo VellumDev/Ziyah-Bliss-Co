@@ -1,14 +1,14 @@
 /* --- 1. GLOBAL BRAND VARIABLES --- */
 :root {
-    --accent: #d8bfd8;         /* Light Purple / Thistle */
-    --accent-hover: #cda4cd;   /* Darker purple */
+    --accent: #d8bfd8;         /* Light Purple */
+    --accent-hover: #cda4cd;   /* Hover Purple */
     --text: #57534e;           /* Dark Stone */
     --bg: #fdfbf9;             /* Cream */
     --white: #ffffff;
     --shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 
-/* --- 2. BASE STYLES --- */
+/* --- 2. BASE RESET --- */
 * { 
     box-sizing: border-box; 
     margin: 0; 
@@ -52,104 +52,113 @@ h1, h2, h3, .logo {
     font-weight: 600; 
 }
 
-/* --- 4. HERO SECTION (HOME PAGE FIX) --- */
+/* --- 4. HERO SECTION (HOME PAGE) --- */
 .hero {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 80px 8%;
+    padding: 60px 8%;
     gap: 40px;
-    max-width: 1400px; /* Prevents text from stretching too far on wide screens */
-    margin: 0 auto;
+    min-height: 80vh; /* Ensures it fills the screen nicely */
 }
 
 .hero-content { 
     flex: 1; 
-    max-width: 600px;
+    max-width: 550px; 
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    line-height: 1.2;
+    font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive font size */
+    line-height: 1.1;
     margin-bottom: 20px;
+    color: var(--text);
 }
 
 .hero p {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     margin-bottom: 30px;
-    max-width: 450px;
+    color: #78716c;
 }
 
 .hero-image { 
     flex: 1; 
-    text-align: right; 
+    display: flex;
+    justify-content: flex-end;
 }
 
 .hero-image img {
     width: 100%;
-    max-width: 500px;
+    max-width: 450px;
     border-radius: 30px;
     box-shadow: var(--shadow);
+    object-fit: cover;
 }
 
-/* --- 5. CATEGORY NAV & FILTERS --- */
-.category-nav {
+/* --- 5. TESTIMONIALS SECTION --- */
+.testimonials {
+    padding: 80px 8%;
+    background-color: var(--white);
+    text-align: center;
+}
+
+.testimonials h2 {
+    margin-bottom: 40px;
+    font-size: 2rem;
+}
+
+.testimonial-grid {
     display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 30px;
-    flex-wrap: wrap;
-    padding: 0 5%;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.filter-btn {
-    background: var(--white);
-    border: 1px solid var(--accent);
-    color: var(--text);
-    padding: 10px 24px;
+.testimonial-item {
+    font-style: italic;
+    font-size: 1.1rem;
+    padding: 20px;
+    border-bottom: 1px solid #f3f0ee;
+}
+
+/* --- 6. BUTTONS --- */
+.btn-add, .btn-shop {
+    background-color: var(--accent);
+    color: white;
+    border: none;
+    padding: 15px 35px;
     border-radius: 50px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
 }
 
-.filter-btn.active, .filter-btn:hover {
-    background-color: var(--accent);
-    color: white;
-    box-shadow: 0 4px 12px rgba(216, 191, 216, 0.3);
+.btn-add:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
 }
 
-/* --- 6. PRODUCT GRID & CARDS --- */
+/* --- 7. PRODUCT GRID (SHOP PAGE) --- */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
-    padding: 40px 8% 80px;
-    align-items: stretch;
+    padding: 40px 8%;
 }
 
 .product-card {
-    background: var(--white);
+    background: white;
     padding: 20px;
     border-radius: 20px;
     box-shadow: var(--shadow);
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Key for JS filtering */
-.product-card[style*="display: none"] {
-    display: none !important;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    text-align: center;
 }
 
 .p-img {
-    width: 100%;
     height: 250px;
     background-size: cover;
     background-position: center;
@@ -157,87 +166,23 @@ h1, h2, h3, .logo {
     margin-bottom: 15px;
 }
 
-.p-info {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    flex-grow: 1;
-}
-
-.price {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: var(--text);
-}
-
-/* --- 7. BUTTONS & INPUTS --- */
-.btn-add, .btn-shop {
-    background-color: var(--accent);
-    color: white;
-    border: none;
-    padding: 14px 28px;
-    border-radius: 50px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s;
-    margin-top: auto;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-}
-
-.btn-add:hover, .btn-shop:hover {
-    background-color: var(--accent-hover);
-}
-
-.p-select, .p-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #eee;
-    border-radius: 10px;
-    font-family: inherit;
-    background: #fafafa;
-}
-
-/* --- 8. TESTIMONIALS (HOME PAGE) --- */
-.testimonials {
-    text-align: center;
-    padding: 60px 8%;
-    background: #fff;
-}
-
-.testimonials h2 {
-    margin-bottom: 40px;
-}
-
-.testimonial-item {
-    max-width: 700px;
-    margin: 0 auto 30px;
-    font-style: italic;
-    color: var(--text);
-}
-
-/* --- 9. MOBILE OPTIMIZATION --- */
+/* --- 8. MOBILE RESPONSIVENESS --- */
 @media (max-width: 768px) {
-    .navbar { padding: 15px 5%; }
-    .nav-links { gap: 15px; font-size: 0.9rem; }
-
     .hero {
         flex-direction: column;
         text-align: center;
-        padding: 40px 8%;
+        padding-top: 40px;
+    }
+    
+    .hero-image {
+        order: -1; /* Image appears above text on mobile */
+        justify-content: center;
     }
 
-    .hero h1 { font-size: 2.2rem; }
-    .hero-content { max-width: 100%; }
-    .hero-image { order: -1; } /* Image comes first on mobile */
-
+    .nav-links { display: none; } /* Consider adding a burger menu later */
+    
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 15px;
-        padding: 20px 4%;
     }
-
-    .p-img { height: 180px; }
-    .product-card { padding: 12px; }
 }
