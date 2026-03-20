@@ -170,3 +170,12 @@ document.addEventListener('DOMContentLoaded', () => {
         shipSelect.addEventListener('change', updateTotals);
     }
 });
+// Mobile Menu Toggle Logic
+const menuToggle = document.querySelector('.mobile-menu-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+if (menuToggle) {
+    menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+    });
+}
